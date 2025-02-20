@@ -26,26 +26,26 @@ typedef struct s_game
 {
 	int				i;            // first index
 	int				j;            //second index
-	int				map_width;    // Largeur de la carte
-	int				map_height;   // Hauteur de la carte
+	int				map_width;    // Map width
+	int				map_height;   // Map height
 	int				player;       // Number of players
-	int				collectibles; // Nombre total de collectibles
+	int				collectibles; // Total number of collectibles
 	int				exit;         // Number of exit doors
-	int				img_width;    // Largeur de l'image
-	int				img_height;   // Hauteur de l'image
-	char			**map;        // Carte du jeu (tableau 2D)
-	char			**map2;       // Carte du jeu (tableau 2D)
+	int				img_width;    // Image width
+	int				img_height;   // Image height
+	char			**map;        // Game Map (2D array)
+	char			**map2;       // Game Map (2D array)
 	int				player_x;     // Player's X position
 	int				player_y;     // Player's Y position
-	int				collected;    // Nombre de collectibles ramassés
-	void			*mlx;         // Pointeur pour MiniLibX
-	void			*window;      // Fenêtre MiniLibX
-	void			*pikachu;     // the player
-	void			*wall;        // It is symbolized by 1 on the map
+	int				collected;    // number of remaining collectibles
+	void			*mlx;         // Pointer for MiniLibX
+	void			*window;      // MiniLibX Window
+	void			*pikachu;     // the player and It is symbolized by P on the map.
+	void			*wall;        // It is symbolized by 1 on the map.
 	void			*door;        // It is symbolized by E on the map.
 	void			*coin;        // It is symbolized by C on the map.
 	void			*floor;       // It is symbolized by 0 on the map.
-	unsigned int	moves;        // Nombre de déplacements du joueur
+	unsigned int	moves;        // Number of player moves
 }	t_game;
 
 int		check_valid(t_game *game);
