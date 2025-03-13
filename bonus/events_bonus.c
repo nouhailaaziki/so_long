@@ -5,19 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: noaziki <noaziki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/20 19:42:19 by noaziki           #+#    #+#             */
-/*   Updated: 2025/02/24 17:19:45 by noaziki          ###   ########.fr       */
+/*   Created: 2025/02/13 11:52:18 by noaziki           #+#    #+#             */
+/*   Updated: 2025/03/13 17:11:57 by noaziki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
+
+void	putuns(unsigned int nbr)
+{
+	char	c;
+
+	c = nbr + 48;
+	if (nbr <= 9)
+		write(1, &c, 1);
+	else
+	{
+		putuns(nbr / 10);
+		putuns(nbr % 10);
+	}
+}
 
 void	print_error(char *message, t_game *game)
 {
 	if (game)
 	{
 		if (game->map)
+		{
 			free_game(game->map);
+		}
 		free(game);
 	}
 	write(2, message, ft_strlen(message));

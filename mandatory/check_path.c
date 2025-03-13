@@ -6,7 +6,7 @@
 /*   By: noaziki <noaziki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 15:21:21 by noaziki           #+#    #+#             */
-/*   Updated: 2025/02/20 10:28:56 by noaziki          ###   ########.fr       */
+/*   Updated: 2025/03/13 17:45:24 by noaziki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	flood_fill(char **map, int x, int y)
 {
-	if (map[x][y] == '1' || map[x][y] == 'A')
+	if (map[x][y] == '1' || map[x][y] == 'A' || map[x][y] == 'E')
 		return ;
 	if (map[x][y] == '0' || map[x][y] == 'C')
 		map[x][y] = 'A';
@@ -56,11 +56,8 @@ int	check_exit(t_game *game)
 
 int	check_path(t_game *game, char *filename)
 {
-	int		lines;
-
-	lines = count_lines(filename);
 	position(game, 'P');
-	game->map2 = malloc((lines + 1) * sizeof(char *));
+	game->map2 = malloc((game->lines + 1) * sizeof(char *));
 	if (!game->map2)
 		print_error("Error\nMemory allocation failed for map!\n", game);
 	read_map(filename, game, game->map2);

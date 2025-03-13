@@ -6,7 +6,7 @@
 /*   By: noaziki <noaziki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:52:18 by noaziki           #+#    #+#             */
-/*   Updated: 2025/02/20 10:40:46 by noaziki          ###   ########.fr       */
+/*   Updated: 2025/03/13 17:10:39 by noaziki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ void	print_error(char *message, t_game *game)
 	if (game)
 	{
 		if (game->map)
+		{
 			free_game(game->map);
+		}
 		free(game);
 	}
 	write(2, message, ft_strlen(message));

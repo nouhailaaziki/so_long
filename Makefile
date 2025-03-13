@@ -14,8 +14,8 @@ MANDATORY = mandatory/events.c \
 			mandatory/motion.c \
 			mandatory/so_long.c \
 			mandatory/check_path.c \
-			libraries/get_next_line/get_next_line.c \
-			libraries/get_next_line/get_next_line_utils.c
+			mandatory/get_next_line.c \
+			mandatory/get_next_line_utils.c
 
 BONUS = bonus/events_bonus.c \
 		bonus/card_parsing_bonus.c \
@@ -23,10 +23,9 @@ BONUS = bonus/events_bonus.c \
 		bonus/motion_bonus.c \
 		bonus/so_long_bonus.c \
 		bonus/check_path_bonus.c \
-		bonus/enemy_location_bonus.c \
-		bonus/enemy_path_bonus.c \
-		libraries/get_next_line/get_next_line_bonus.c \
-		libraries/get_next_line/get_next_line_utils_bonus.c
+		bonus/get_next_line_bonus.c \
+		bonus/get_next_line_utils_bonus.c
+#		bonus/enemy_bonus.c \
 
 OBJM = ${MANDATORY:.c=.o}
 OBJB = ${BONUS:.c=.o}
@@ -34,15 +33,15 @@ OBJB = ${BONUS:.c=.o}
 NAME = so_long
 BONUS_NAME = so_long_bonus
 
-LIBFT = libraries/libft/libft.a
+LIBFT = libft/libft.a
 
 HEADER = mandatory/so_long.h \
-		libraries/libft/libft.h \
-		libraries/get_next_line/get_next_line.h
+		libft/libft.h \
+		mandatory/get_next_line.h
 
 HEADER_BONUS = bonus/so_long_bonus.h \
-				libraries/libft/libft.h \
-				libraries/get_next_line/get_next_line_bonus.h
+				libft/libft.h \
+				bonus/get_next_line_bonus.h
 
 all: ${NAME}
 
@@ -63,16 +62,16 @@ bonus/%.o: bonus/%.c ${HEADER_BONUS}
 	${COMPILER} ${CFLAGS} -c $< -o $@
 
 ${LIBFT}:
-	make -C libraries/libft
+	make -C libft
 
 clean:
 	${RM} ${OBJM} $(OBJB)
-	make clean -C libraries/libft
+	make clean -C libft
 	@echo "${RED}🗑 Object files removed!${RESET}"
 
 fclean: clean
 	${RM} ${NAME} ${BONUS_NAME}
-	make fclean -C libraries/libft
+	make fclean -C libft
 	@echo "${RED}🔥 Executable removed!${RESET}"
 
 re: fclean all

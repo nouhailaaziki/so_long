@@ -6,7 +6,7 @@
 /*   By: noaziki <noaziki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:51:05 by noaziki           #+#    #+#             */
-/*   Updated: 2025/02/20 10:42:51 by noaziki          ###   ########.fr       */
+/*   Updated: 2025/03/10 16:00:56 by noaziki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,13 +113,13 @@ int	handle_keypress(int keycode, t_game *game)
 				"textures/door.xpm", &game->img_width, &game->img_height);
 		draw_map(game);
 	}
-	if (keycode == 126)
+	if (keycode == 126 || keycode == 13)
 		player_up(game);
-	if (keycode == 125)
+	if (keycode == 125 || keycode == 1)
 		player_down(game);
-	if (keycode == 124)
+	if (keycode == 124 || keycode == 2)
 		player_right(game);
-	if (keycode == 123)
+	if (keycode == 123 || keycode == 0)
 		player_left(game);
 	else if (keycode == 53)
 		close_game(game);

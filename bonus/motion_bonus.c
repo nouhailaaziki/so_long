@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: noaziki <noaziki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/20 19:41:30 by noaziki           #+#    #+#             */
-/*   Updated: 2025/03/01 12:11:21 by noaziki          ###   ########.fr       */
+/*   Created: 2025/02/13 11:51:05 by noaziki           #+#    #+#             */
+/*   Updated: 2025/03/13 16:59:26 by noaziki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	player_up(t_game *game)
 	{
 		if (game->map[game->player_x - 1][game->player_y] == 'C')
 			game->collected--;
+		game->moves++;
 		game->map[game->player_x - 1][game->player_y] = 'P';
 		game->map[game->player_x][game->player_y] = '0';
 	}
@@ -28,8 +29,9 @@ void	player_up(t_game *game)
 		&& game->collected == 0)
 		(write(1, "Victory! You did it!\n", 22), close_game(game));
 	game->pikachu = mlx_xpm_file_to_image(game->mlx,
-			"textures/player_back.xpm", &game->img_width, &game->img_height);
+			"textures/pikachu_back.xpm", &game->img_width, &game->img_height);
 	draw_map(game);
+	render_moves_counter(game);
 }
 
 void	player_down(t_game *game)
@@ -41,6 +43,7 @@ void	player_down(t_game *game)
 	{
 		if (game->map[game->player_x + 1][game->player_y] == 'C')
 			game->collected--;
+		game->moves++;
 		game->map[game->player_x + 1][game->player_y] = 'P';
 		game->map[game->player_x][game->player_y] = '0';
 	}
@@ -48,8 +51,9 @@ void	player_down(t_game *game)
 		&& game->collected == 0)
 		(write(1, "Victory! You did it!\n", 22), close_game(game));
 	game->pikachu = mlx_xpm_file_to_image(game->mlx,
-			"textures/player.xpm", &game->img_width, &game->img_height);
+			"textures/pikachu.xpm", &game->img_width, &game->img_height);
 	draw_map(game);
+	render_moves_counter(game);
 }
 
 void	player_right(t_game *game)
@@ -61,6 +65,7 @@ void	player_right(t_game *game)
 	{
 		if (game->map[game->player_x][game->player_y + 1] == 'C')
 			game->collected--;
+		game->moves++;
 		game->map[game->player_x][game->player_y + 1] = 'P';
 		game->map[game->player_x][game->player_y] = '0';
 	}
@@ -68,8 +73,9 @@ void	player_right(t_game *game)
 		&& game->collected == 0)
 		(write(1, "Victory! You did it!\n", 22), close_game(game));
 	game->pikachu = mlx_xpm_file_to_image(game->mlx,
-			"textures/player_right.xpm", &game->img_width, &game->img_height);
+			"textures/pikachu_right.xpm", &game->img_width, &game->img_height);
 	draw_map(game);
+	render_moves_counter(game);
 }
 
 void	player_left(t_game *game)
@@ -81,6 +87,7 @@ void	player_left(t_game *game)
 	{
 		if (game->map[game->player_x][game->player_y - 1] == 'C')
 			game->collected--;
+		game->moves++;
 		game->map[game->player_x][game->player_y - 1] = 'P';
 		game->map[game->player_x][game->player_y] = '0';
 	}
@@ -88,8 +95,9 @@ void	player_left(t_game *game)
 		&& game->collected == 0)
 		(write(1, "Victory! You did it!\n", 22), close_game(game));
 	game->pikachu = mlx_xpm_file_to_image(game->mlx,
-			"textures/player_left.xpm", &game->img_width, &game->img_height);
+			"textures/pikachu_left.xpm", &game->img_width, &game->img_height);
 	draw_map(game);
+	render_moves_counter(game);
 }
 
 int	handle_keypress(int keycode, t_game *game)
@@ -98,16 +106,16 @@ int	handle_keypress(int keycode, t_game *game)
 	if (game->collected == 0)
 	{
 		game->door = mlx_xpm_file_to_image(game->mlx,
-				"textures/door.xpm", &game->img_width, &game->img_height);
+				"textures/door_bonus.xpm", &game->img_width, &game->img_height);
 		draw_map(game);
 	}
-	if (keycode == 126)
+	if (keycode == 126 || keycode == 13)
 		player_up(game);
-	if (keycode == 125)
+	if (keycode == 125 || keycode == 1)
 		player_down(game);
-	if (keycode == 124)
+	if (keycode == 124 || keycode == 2)
 		player_right(game);
-	if (keycode == 123)
+	if (keycode == 123 || keycode == 0)
 		player_left(game);
 	else if (keycode == 53)
 		close_game(game);

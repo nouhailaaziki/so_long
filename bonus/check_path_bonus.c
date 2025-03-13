@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: noaziki <noaziki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/20 19:43:20 by noaziki           #+#    #+#             */
-/*   Updated: 2025/03/01 11:46:08 by noaziki          ###   ########.fr       */
+/*   Created: 2025/02/16 15:21:21 by noaziki           #+#    #+#             */
+/*   Updated: 2025/03/12 16:00:03 by noaziki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	flood_fill(char **map, int x, int y)
 {
-	if (map[x][y] == '1' || map[x][y] == 'A'
-		|| map[x][y] == 'E' || map[x][y] == 'N')
+	if (map[x][y] == '1' || map[x][y] == 'A' || map[x][y] == 'E')
 		return ;
 	if (map[x][y] == '0' || map[x][y] == 'C')
 		map[x][y] = 'A';
@@ -57,22 +56,13 @@ int	check_exit(t_game *game)
 
 int	check_path(t_game *game, char *filename)
 {
-	int		lines;
-
-	game->enemy_y = 0;
-	game->enemy_x1 = 0;
-	game->enemy_x2 = 0;
-	lines = count_lines(filename, game);
 	position(game, 'P');
-	game->map2 = malloc((lines + 1) * sizeof(char *));
+	game->map2 = malloc((game->lines + 1) * sizeof(char *));
 	if (!game->map2)
 		print_error("Error\nMemory allocation failed for map!\n", game);
 	read_map(filename, game, game->map2);
 	flood_fill(game->map2, game->player_x, game->player_y);
 	if (check_content(game, game->map2, "01PAE") || check_exit(game))
 		return (free_game(game->map2), 1);
-	free_game(game->map2);
-	initialize_enemy(game);
-	check_enemy_path(game, filename);
-	return (0);
+	return (free_game(game->map2), 0);
 }

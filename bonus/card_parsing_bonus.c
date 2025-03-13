@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: noaziki <noaziki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/20 19:43:48 by noaziki           #+#    #+#             */
-/*   Updated: 2025/02/24 16:33:53 by noaziki          ###   ########.fr       */
+/*   Created: 2025/02/13 11:48:03 by noaziki           #+#    #+#             */
+/*   Updated: 2025/03/12 15:58:36 by noaziki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,7 @@ int	check_valid(t_game *game)
 		}
 		game->i++;
 	}
-	if (game->player != 1 || !game->collectibles
-		|| game->exit != 1)
+	if (game->player != 1 || !game->collectibles || game->exit != 1)
 		return (1);
 	return (0);
 }
@@ -102,8 +101,10 @@ int	check_map_validity(t_game *game, char *filename)
 		print_error("Error\nthe map must be rectangular!\n", game);
 	if (check_close(game))
 		print_error("Error\nthe map must be closed!\n", game);
-	if (check_valid(game) || check_content(game, game->map, "01PCEN"))
+	if (check_valid(game) || check_content(game, game->map, "01PCE"))
 		print_error("Error\nthe map is not valid!\n", game);
+	if (game->map_height > 22 || game->map_width > 40)
+		print_error("Error!\nThe map exceeds the screen area!\n", game);
 	if (check_path(game, filename))
 		print_error("Error\nthe path is not valid!\n", game);
 	render_map(game);

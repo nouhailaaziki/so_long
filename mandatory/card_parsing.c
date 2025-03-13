@@ -6,7 +6,7 @@
 /*   By: noaziki <noaziki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:48:03 by noaziki           #+#    #+#             */
-/*   Updated: 2025/02/18 16:11:35 by noaziki          ###   ########.fr       */
+/*   Updated: 2025/03/12 14:57:57 by noaziki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ int	check_map_validity(t_game *game, char *filename)
 		print_error("Error\nthe map must be closed!\n", game);
 	if (check_valid(game) || check_content(game, game->map, "01PCE"))
 		print_error("Error\nthe map is not valid!\n", game);
+	if (game->map_height > 22 || game->map_width > 40)
+		print_error("Error!\nThe map exceeds the screen area!\n", game);
 	if (check_path(game, filename))
 		print_error("Error\nthe path is not valid!\n", game);
 	render_map(game);
