@@ -6,7 +6,7 @@
 /*   By: noaziki <noaziki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:14:51 by noaziki           #+#    #+#             */
-/*   Updated: 2025/03/13 17:38:16 by noaziki          ###   ########.fr       */
+/*   Updated: 2025/03/17 15:45:08 by noaziki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct s_game
 {
 	int				i;
 	int				j;
+	int				x;
+	int				y;
 	int				map_width;
 	int				map_height;
 	int				player;
@@ -45,6 +47,7 @@ typedef struct s_game
 	void			*door;
 	void			*coin;
 	void			*floor;
+	void			*enemy;
 	unsigned int	moves;
 }	t_game;
 
@@ -56,6 +59,8 @@ int		check_map_validity(t_game *game, char *filename);
 int		check_path(t_game *game, char *filename);
 int		close_game(t_game *game);
 int		handle_keypress(int keycode, t_game *game);
+int		check_exit(t_game *game);
+int		enemy_moves(t_game *game);
 void	count_lines(char *filename, t_game *game);
 void	position(t_game *game, char c);
 void	free_game(char **map);
@@ -65,5 +70,7 @@ void	render_map(t_game *game);
 void	count_collected(t_game	*game);
 void	draw_map(t_game *game);
 void	render_moves_counter(t_game *game);
-
+void	place_enemy(t_game *game);
+void	draw_game_objects(t_game *game);
+int		enemy_moves(t_game *game);
 #endif

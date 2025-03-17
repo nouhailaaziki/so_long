@@ -24,8 +24,9 @@ BONUS = bonus/events_bonus.c \
 		bonus/so_long_bonus.c \
 		bonus/check_path_bonus.c \
 		bonus/get_next_line_bonus.c \
-		bonus/get_next_line_utils_bonus.c
-#		bonus/enemy_bonus.c \
+		bonus/get_next_line_utils_bonus.c \
+		bonus/enemy_manager_bonus.c \
+		bonus/enemy_motion_bonus.c
 
 OBJM = ${MANDATORY:.c=.o}
 OBJB = ${BONUS:.c=.o}

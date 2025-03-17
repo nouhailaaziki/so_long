@@ -6,7 +6,7 @@
 /*   By: noaziki <noaziki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 15:21:21 by noaziki           #+#    #+#             */
-/*   Updated: 2025/03/12 16:00:03 by noaziki          ###   ########.fr       */
+/*   Updated: 2025/03/15 22:44:29 by noaziki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	check_exit(t_game *game)
 int	check_path(t_game *game, char *filename)
 {
 	position(game, 'P');
-	game->map2 = malloc((game->lines + 1) * sizeof(char *));
+	game->map2 = (char **)malloc(sizeof(char *) * (game->lines + 1));
 	if (!game->map2)
 		print_error("Error\nMemory allocation failed for map!\n", game);
 	read_map(filename, game, game->map2);

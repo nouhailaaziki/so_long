@@ -6,7 +6,7 @@
 /*   By: noaziki <noaziki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:48:03 by noaziki           #+#    #+#             */
-/*   Updated: 2025/03/12 15:58:36 by noaziki          ###   ########.fr       */
+/*   Updated: 2025/03/17 14:29:11 by noaziki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int	check_map_validity(t_game *game, char *filename)
 		print_error("Error!\nThe map exceeds the screen area!\n", game);
 	if (check_path(game, filename))
 		print_error("Error\nthe path is not valid!\n", game);
+	place_enemy(game);
 	render_map(game);
 	return (0);
 }

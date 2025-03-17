@@ -6,7 +6,7 @@
 /*   By: noaziki <noaziki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:50:09 by noaziki           #+#    #+#             */
-/*   Updated: 2025/03/13 17:13:23 by noaziki          ###   ########.fr       */
+/*   Updated: 2025/03/17 16:04:02 by noaziki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,7 @@ void	draw_map(t_game *game)
 		game->j = 0;
 		while (game->map[game->i][game->j])
 		{
-			if (game->map[game->i][game->j] == 'E')
-				mlx_put_image_to_window(game->mlx, game->window,
-					game->door, game->j * 64, game->i * 64);
-			if (game->map[game->i][game->j] == 'P')
-				mlx_put_image_to_window(game->mlx, game->window,
-					game->pikachu, game->j * 64, game->i * 64);
-			if (game->map[game->i][game->j] == '1')
-				mlx_put_image_to_window(game->mlx, game->window,
-					game->wall, game->j * 64, game->i * 64);
-			if (game->map[game->i][game->j] == '0')
-				mlx_put_image_to_window(game->mlx, game->window,
-					game->floor, game->j * 64, game->i * 64);
-			if (game->map[game->i][game->j] == 'C')
-				mlx_put_image_to_window(game->mlx, game->window,
-					game->coin, game->j * 64, game->i * 64);
+			draw_game_objects(game);
 			game->j++;
 		}
 		game->i++;
@@ -53,8 +39,10 @@ void	xpm_to_img(t_game *game)
 			"textures/pokeball_bonus.xpm", &game->img_width, &game->img_height);
 	game->floor = mlx_xpm_file_to_image(game->mlx,
 			"textures/floor_bonus.xpm", &game->img_width, &game->img_height);
+	game->enemy = mlx_xpm_file_to_image(game->mlx,
+			"textures/enemy_left.xpm", &game->img_width, &game->img_height);
 	if (!game->pikachu || !game->door || !game->wall
-		|| !game->coin || !game->floor)
+		|| !game->coin || !game->floor || !game->enemy)
 		print_error("Error\nimage name is not compatible!\n", game);
 }
 
@@ -98,6 +86,7 @@ void	render_map(t_game *game)
 	xpm_to_img(game);
 	draw_map(game);
 	mlx_hook(game->window, 2, 1L << 0, handle_keypress, game);
+	mlx_loop_hook(game->mlx, enemy_moves, game);
 	mlx_hook(game->window, 17, 1L << 0, close_game, game);
 	mlx_loop(game->mlx);
 }
