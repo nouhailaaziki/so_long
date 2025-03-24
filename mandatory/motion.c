@@ -6,7 +6,7 @@
 /*   By: noaziki <noaziki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:51:05 by noaziki           #+#    #+#             */
-/*   Updated: 2025/03/10 16:00:56 by noaziki          ###   ########.fr       */
+/*   Updated: 2025/03/24 14:22:50 by noaziki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ void	player_up(t_game *game)
 		(write(1, "Victory! You did it!\n", 22), close_game(game));
 	game->pikachu = mlx_xpm_file_to_image(game->mlx,
 			"textures/player_back.xpm", &game->img_width, &game->img_height);
+	if (!game->pikachu)
+	{
+		destroy_images(game);
+		print_error("Error\nimage name is not compatible!\n", game);
+	}
 	draw_map(game);
 }
 
@@ -55,6 +60,11 @@ void	player_down(t_game *game)
 		(write(1, "Victory! You did it!\n", 22), close_game(game));
 	game->pikachu = mlx_xpm_file_to_image(game->mlx,
 			"textures/player.xpm", &game->img_width, &game->img_height);
+	if (!game->pikachu)
+	{
+		destroy_images(game);
+		print_error("Error\nimage name is not compatible!\n", game);
+	}
 	draw_map(game);
 }
 
@@ -78,6 +88,11 @@ void	player_right(t_game *game)
 		(write(1, "Victory! You did it!\n", 22), close_game(game));
 	game->pikachu = mlx_xpm_file_to_image(game->mlx,
 			"textures/player_right.xpm", &game->img_width, &game->img_height);
+	if (!game->pikachu)
+	{
+		destroy_images(game);
+		print_error("Error\nimage name is not compatible!\n", game);
+	}
 	draw_map(game);
 }
 
@@ -101,6 +116,11 @@ void	player_left(t_game *game)
 		(write(1, "Victory! You did it!\n", 22), close_game(game));
 	game->pikachu = mlx_xpm_file_to_image(game->mlx,
 			"textures/player_left.xpm", &game->img_width, &game->img_height);
+	if (!game->pikachu)
+	{
+		destroy_images(game);
+		print_error("Error\nimage name is not compatible!\n", game);
+	}
 	draw_map(game);
 }
 

@@ -6,17 +6,33 @@
 /*   By: noaziki <noaziki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 15:21:21 by noaziki           #+#    #+#             */
-/*   Updated: 2025/03/15 22:44:29 by noaziki          ###   ########.fr       */
+/*   Updated: 2025/03/24 15:25:25 by noaziki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
+void	copy_map(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	game->map2 = (char **)malloc(sizeof(char *) * (game->lines + 1));
+	if (!game->map2)
+		print_error("Error\nMemory allocation failed for map!\n", game);
+	while (game->map[i])
+	{
+		game->map2[i] = ft_strdup(game->map[i]);
+		i++;
+	}
+	game->map2[i] = NULL;
+}
+
 void	flood_fill(char **map, int x, int y)
 {
 	if (map[x][y] == '1' || map[x][y] == 'A' || map[x][y] == 'E')
 		return ;
-	if (map[x][y] == '0' || map[x][y] == 'C')
+	if (map[x][y] == '0' || map[x][y] == 'C' || map[x][y] == 'P')
 		map[x][y] = 'A';
 	flood_fill(map, x + 1, y);
 	flood_fill(map, x - 1, y);

@@ -6,7 +6,7 @@
 /*   By: noaziki <noaziki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:51:05 by noaziki           #+#    #+#             */
-/*   Updated: 2025/03/15 22:54:56 by noaziki          ###   ########.fr       */
+/*   Updated: 2025/03/24 15:20:31 by noaziki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	player_up(t_game *game)
 	count_collected(game);
 	position(game, 'P');
 	if (game->map[game->player_x - 1][game->player_y] == '0'
-		|| game->map[game->player_x - 1][game->player_y] == 'C')
+		|| game->map[game->player_x - 1][game->player_y] == 'C'
+		|| game->map[game->player_x - 1][game->player_y] == 'N')
 	{
 		if (game->map[game->player_x - 1][game->player_y] == 'C')
 			game->collected--;
@@ -30,6 +31,11 @@ void	player_up(t_game *game)
 		(write(1, "Victory! You did it!\n", 22), close_game(game));
 	game->pikachu = mlx_xpm_file_to_image(game->mlx,
 			"textures/pikachu_back.xpm", &game->img_width, &game->img_height);
+	if (!game->pikachu)
+	{
+		destroy_images(game);
+		print_error("Error\nimage name is not compatible!\n", game);
+	}
 	draw_map(game);
 	render_moves_counter(game);
 }
@@ -39,7 +45,8 @@ void	player_down(t_game *game)
 	count_collected(game);
 	position(game, 'P');
 	if (game->map[game->player_x + 1][game->player_y] == '0'
-		|| game->map[game->player_x + 1][game->player_y] == 'C')
+		|| game->map[game->player_x + 1][game->player_y] == 'C'
+		|| game->map[game->player_x + 1][game->player_y] == 'N')
 	{
 		if (game->map[game->player_x + 1][game->player_y] == 'C')
 			game->collected--;
@@ -52,6 +59,11 @@ void	player_down(t_game *game)
 		(write(1, "Victory! You did it!\n", 22), close_game(game));
 	game->pikachu = mlx_xpm_file_to_image(game->mlx,
 			"textures/pikachu.xpm", &game->img_width, &game->img_height);
+	if (!game->pikachu)
+	{
+		destroy_images(game);
+		print_error("Error\nimage name is not compatible!\n", game);
+	}
 	draw_map(game);
 	render_moves_counter(game);
 }
@@ -61,7 +73,8 @@ void	player_right(t_game *game)
 	count_collected(game);
 	position(game, 'P');
 	if (game->map[game->player_x][game->player_y + 1] == '0'
-		|| game->map[game->player_x][game->player_y + 1] == 'C')
+		|| game->map[game->player_x][game->player_y + 1] == 'C'
+		|| game->map[game->player_x][game->player_y + 1] == 'N')
 	{
 		if (game->map[game->player_x][game->player_y + 1] == 'C')
 			game->collected--;
@@ -74,6 +87,11 @@ void	player_right(t_game *game)
 		(write(1, "Victory! You did it!\n", 22), close_game(game));
 	game->pikachu = mlx_xpm_file_to_image(game->mlx,
 			"textures/pikachu_right.xpm", &game->img_width, &game->img_height);
+	if (!game->pikachu)
+	{
+		destroy_images(game);
+		print_error("Error\nimage name is not compatible!\n", game);
+	}
 	draw_map(game);
 	render_moves_counter(game);
 }
@@ -83,7 +101,8 @@ void	player_left(t_game *game)
 	count_collected(game);
 	position(game, 'P');
 	if (game->map[game->player_x][game->player_y - 1] == '0'
-		|| game->map[game->player_x][game->player_y - 1] == 'C')
+		|| game->map[game->player_x][game->player_y - 1] == 'C'
+		|| game->map[game->player_x][game->player_y - 1] == 'N')
 	{
 		if (game->map[game->player_x][game->player_y - 1] == 'C')
 			game->collected--;
@@ -96,6 +115,11 @@ void	player_left(t_game *game)
 		(write(1, "Victory! You did it!\n", 22), close_game(game));
 	game->pikachu = mlx_xpm_file_to_image(game->mlx,
 			"textures/pikachu_left.xpm", &game->img_width, &game->img_height);
+	if (!game->pikachu)
+	{
+		destroy_images(game);
+		print_error("Error\nimage name is not compatible!\n", game);
+	}
 	draw_map(game);
 	render_moves_counter(game);
 }

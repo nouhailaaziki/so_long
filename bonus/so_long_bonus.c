@@ -6,7 +6,7 @@
 /*   By: noaziki <noaziki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 15:02:55 by noaziki           #+#    #+#             */
-/*   Updated: 2025/03/15 22:38:36 by noaziki          ###   ########.fr       */
+/*   Updated: 2025/03/24 15:44:24 by noaziki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	read_map(char *filename, t_game *game, char **map)
 		{
 			free(line);
 			close (fd);
-			print_error("Error\nline is empty!", game);
+			map[game->i] = NULL;
+			print_error("Error\nline is empty!\n", game);
 		}
 		map[game->i] = ft_strtrim(line, "\n");
 		free(line);
@@ -55,6 +56,7 @@ void	count_lines(char *filename, t_game *game)
 	if (!line)
 	{
 		close(fd);
+		game->map = NULL;
 		print_error("Error\nEmpty file or read error!\n", game);
 	}
 	while (line)
@@ -63,29 +65,26 @@ void	count_lines(char *filename, t_game *game)
 		free(line);
 		line = get_next_line(fd);
 	}
-	close (fd);
+	close(fd);
 }
 
 int	main(int argc, char **argv)
 {
-	t_game	*game;
+	t_game	game;
 
 	if (argc == 2)
 	{
 		if (ft_strrchr(argv[1], '.')
 			&& (ft_strncmp(ft_strrchr(argv[1], '.'), ".ber", 6)) == 0)
 		{
-			game = malloc(sizeof(t_game));
-			if (!game)
-				print_error("Error\nMemory allocation failed!\n", NULL);
-			count_lines(argv[1], game);
-			game->map = malloc((game->lines + 1) * sizeof(char *));
-			if (!game->map)
-				print_error("Error\nMemory allocation failed for map!\n", game);
-			read_map(argv[1], game, game->map);
-			check_map_validity(game, argv[1]);
-			free_game(game->map);
-			free(game);
+			count_lines(argv[1], &game);
+			game.map = malloc((game.lines + 1) * sizeof(char *));
+			if (!game.map)
+				print_error("Error\nMemory allocation \
+				failed for map!\n", &game);
+			read_map(argv[1], &game, game.map);
+			check_map_validity(&game, argv[1]);
+			free_game(game.map);
 		}
 		else
 			print_error("Error\nThe map name must be .ber!\n", NULL);

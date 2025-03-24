@@ -6,11 +6,11 @@
 /*   By: noaziki <noaziki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 15:58:52 by noaziki           #+#    #+#             */
-/*   Updated: 2024/12/26 14:44:58 by noaziki          ###   ########.fr       */
+/*   Updated: 2025/03/23 17:04:14 by noaziki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "so_long.h"
 
 size_t	ft_strlen(const char *str)
 {

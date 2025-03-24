@@ -1,6 +1,6 @@
 COMPILER = cc
 
-CFLAGS = -Wall -Wextra -Werror -Imlx
+CFLAGS = -Wall -Wextra -Werror
 
 RED = \033[0;31m
 GREEN = \033[0;32m
@@ -37,12 +37,10 @@ BONUS_NAME = so_long_bonus
 LIBFT = libft/libft.a
 
 HEADER = mandatory/so_long.h \
-		libft/libft.h \
-		mandatory/get_next_line.h
+		libft/libft.h
 
 HEADER_BONUS = bonus/so_long_bonus.h \
-				libft/libft.h \
-				bonus/get_next_line_bonus.h
+				libft/libft.h
 
 all: ${NAME}
 

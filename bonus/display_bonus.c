@@ -6,7 +6,7 @@
 /*   By: noaziki <noaziki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:50:09 by noaziki           #+#    #+#             */
-/*   Updated: 2025/03/17 16:04:02 by noaziki          ###   ########.fr       */
+/*   Updated: 2025/03/24 15:02:25 by noaziki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ void	xpm_to_img(t_game *game)
 			"textures/enemy_left.xpm", &game->img_width, &game->img_height);
 	if (!game->pikachu || !game->door || !game->wall
 		|| !game->coin || !game->floor || !game->enemy)
+	{
+		destroy_images(game);
 		print_error("Error\nimage name is not compatible!\n", game);
+	}
 }
 
 void	count_collected(t_game	*game)
@@ -85,8 +88,9 @@ void	render_map(t_game *game)
 		print_error("Error\nfailed to create MLX window!\n", game);
 	xpm_to_img(game);
 	draw_map(game);
-	mlx_hook(game->window, 2, 1L << 0, handle_keypress, game);
+	mlx_key_hook(game->window, handle_keypress, game);
+	count_enemies(game);
 	mlx_loop_hook(game->mlx, enemy_moves, game);
-	mlx_hook(game->window, 17, 1L << 0, close_game, game);
+	mlx_hook(game->window, 17, 0, close_game, game);
 	mlx_loop(game->mlx);
 }

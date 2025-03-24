@@ -6,11 +6,11 @@
 /*   By: noaziki <noaziki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 12:16:07 by noaziki           #+#    #+#             */
-/*   Updated: 2025/03/13 17:39:13 by noaziki          ###   ########.fr       */
+/*   Updated: 2025/03/23 17:03:14 by noaziki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "so_long_bonus.h"
 
 char	*find_line(int fd, char *rest, char *buffer)
 {

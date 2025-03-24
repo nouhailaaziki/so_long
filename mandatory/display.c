@@ -6,7 +6,7 @@
 /*   By: noaziki <noaziki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/13 11:50:09 by noaziki           #+#    #+#             */
-/*   Updated: 2025/03/10 15:20:24 by noaziki          ###   ########.fr       */
+/*   Updated: 2025/03/24 13:54:19 by noaziki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,10 @@ void	xpm_to_img(t_game *game)
 			"textures/floor.xpm", &game->img_width, &game->img_height);
 	if (!game->pikachu || !game->door || !game->wall
 		|| !game->coin || !game->floor)
+	{
+		destroy_images(game);
 		print_error("Error\nimage name is not compatible!\n", game);
+	}
 }
 
 void	count_collected(t_game	*game)
@@ -88,7 +91,7 @@ void	render_map(t_game *game)
 		print_error("Error\nfailed to create MLX window!\n", game);
 	xpm_to_img(game);
 	draw_map(game);
-	mlx_hook(game->window, 2, 1L << 0, handle_keypress, game);
-	mlx_hook(game->window, 17, 1L << 0, close_game, game);
+	mlx_key_hook(game->window, handle_keypress, game);
+	mlx_hook(game->window, 17, 0, close_game, game);
 	mlx_loop(game->mlx);
 }

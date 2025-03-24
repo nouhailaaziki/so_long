@@ -6,7 +6,7 @@
 /*   By: noaziki <noaziki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 15:21:21 by noaziki           #+#    #+#             */
-/*   Updated: 2025/03/13 17:45:24 by noaziki          ###   ########.fr       */
+/*   Updated: 2025/03/24 14:46:00 by noaziki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	flood_fill(char **map, int x, int y)
 {
 	if (map[x][y] == '1' || map[x][y] == 'A' || map[x][y] == 'E')
 		return ;
-	if (map[x][y] == '0' || map[x][y] == 'C')
+	if (map[x][y] == '0' || map[x][y] == 'C' || map[x][y] == 'P')
 		map[x][y] = 'A';
 	flood_fill(map, x + 1, y);
 	flood_fill(map, x - 1, y);
