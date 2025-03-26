@@ -1,5 +1,5 @@
 # Pikachu Maze Adventure - so_long
-![cover](screenshots/cover.png)
+
 ## 📝 Description
 
 Pikachu Maze Adventure is a 2D game developed using the so_long framework from the 42 Network. The game starts with Pikachu as the main character, navigating through a labyrinth to collect all the Pokéballs before reaching the exit. The game has two versions:
@@ -29,15 +29,12 @@ Strategy: Avoid enemies while collecting all Pokéballs before heading to the ex
 ## 🖼️ Screenshots
 
 ### Basic Version
-![mandatory](screenshots/mandatory1.png)
-![mandatory](screenshots/mandatory2.png)
-![mandatory](screenshots/mandatory3.png)
-![mandatory](screenshots/mandatory4.png)
+
+
 
 ### Extended Version (with Enemies)
-![bonus](screenshots/bonus1.png)
-![bonus](screenshots/bonus2.png)
-![bonus](screenshots/bonus3.png)
+
+
 
 ## 🛠️ Features
 
@@ -56,14 +53,7 @@ To play the game, clone the repository and compile it:
 git clone https://github.com/your-github-username/your-repository-name.git
 cd your-repository-name
 make
-./so_long maps/level1.ber
-./so_long maps/level2.ber
-./so_long maps/level3.ber
-./so_long maps/screen_size.ber
-make bonus
-./so_long_bonus maps/level1.ber
-./so_long_bonus maps/level2.ber
-./so_long_bonus maps/screen_size.ber
+./so_long maps/map.ber
 ```
 
 ## 📌 Notes
