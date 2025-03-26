@@ -56,7 +56,14 @@ To play the game, clone the repository and compile it:
 git clone https://github.com/your-github-username/your-repository-name.git
 cd your-repository-name
 make
-./so_long maps/map.ber
+./so_long maps/level1.ber
+./so_long maps/level2.ber
+./so_long maps/level3.ber
+./so_long maps/screen_size.ber
+make bonus
+./so_long_bonus maps/level1.ber
+./so_long_bonus maps/level2.ber
+./so_long_bonus maps/screen_size.ber
 ```
 
 ## 📌 Notes
