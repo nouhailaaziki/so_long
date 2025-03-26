@@ -1,5 +1,5 @@
 # Pikachu Maze Adventure - so_long
-
+![cover](screenshots/cover.png)
 ## 📝 Description
 
 Pikachu Maze Adventure is a 2D game developed using the so_long framework from the 42 Network. The game starts with Pikachu as the main character, navigating through a labyrinth to collect all the Pokéballs before reaching the exit. The game has two versions:
