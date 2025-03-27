@@ -1,8 +1,8 @@
-# Pikachu Maze Adventure - so_long
+# Pikamaze - so_long
 ![cover](screenshots/cover.png)
 ## 📝 Description
 
-Pikachu Maze Adventure is a 2D game developed using the so_long framework from the 42 Network. The game starts with Pikachu as the main character, navigating through a labyrinth to collect all the Pokéballs before reaching the exit. The game has two versions:
+**Pikamaze** (Pikachu Maze Adventure) is a 2D game developed using the so_long framework from the 42 Network. The game starts with Pikachu as the main character, navigating through a labyrinth to collect all the Pokéballs before reaching the exit. The game has two versions:
 
 Basic Version: No enemies—Pikachu can freely collect the Pokéballs and reach the exit.
 
@@ -27,11 +27,17 @@ Enemies: Move in a fixed pattern and cause game over if touched.
 Strategy: Avoid enemies while collecting all Pokéballs before heading to the exit.
 
 ## 🖼️ Screenshots
+![1](screenshots/mandatory1.png)
+![2](screenshots/mandatory2.png)
+![3](screenshots/mandatory3.png)
+![4](screenshots/mandatory4.png)
 
 ### Basic Version
+![1](screenshots/bonus1.png)
+![2](screenshots/bonus2.png)
+![3](screenshots/bonus3.png)
 
-
-
+You can watch the game review video through the link : [Pikamaze](https://www.linkedin.com/feed/update/urn:li:activity:7311086371476066304/)
 ### Extended Version (with Enemies)
 
 
