@@ -27,20 +27,18 @@ Enemies: Move in a fixed pattern and cause game over if touched.
 Strategy: Avoid enemies while collecting all Pokéballs before heading to the exit.
 
 ## 🖼️ Screenshots
+### Mandatory Version
 ![1](screenshots/mandatory1.png)
 ![2](screenshots/mandatory2.png)
 ![3](screenshots/mandatory3.png)
 ![4](screenshots/mandatory4.png)
 
-### Basic Version
+### Bonus Version
 ![1](screenshots/bonus1.png)
 ![2](screenshots/bonus2.png)
 ![3](screenshots/bonus3.png)
 
-You can watch the game review video through the link : [Pikamaze](https://www.linkedin.com/feed/update/urn:li:activity:7311086371476066304/)
-### Extended Version (with Enemies)
-
-
+**You can watch the game review video through the link :** [Pikamaze](https://www.linkedin.com/feed/update/urn:li:activity:7311086371476066304/)
 
 ## 🛠️ Features
 
@@ -74,4 +72,4 @@ The game is designed with distinct colors and styles for better visual appeal.
 
 This project is for educational purposes and follows the 42 Network guidelines.
 
-### Enjoy playing Pikachu Maze Adventure! ⚡🎮
+### Enjoy playing Pikamaze Adventure! ⚡🎮
